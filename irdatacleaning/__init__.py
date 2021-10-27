@@ -6,3 +6,4 @@ from .encoder2 import Encoder
 from .missingvalues import MissingValues
 from .featur_scaling import FeatureScaler
 from .inconsistent_data import InconsistentData
+from .resources import Resources
