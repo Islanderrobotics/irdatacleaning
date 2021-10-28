@@ -17,17 +17,4 @@ setup(
     packages=find_packages(),
     install_requires=["pandas","matplotlib","PyQt5","scikit-learn","IslanderDataPreprocessing"],
     keywords=['python',"machine Learning", "Artificial Intelligence","Data Science","Data Cleaning"],
-    classifiers=[
-        "Development Status :: 1 - Planning",
-        "Intended Audience :: Developers",
-        "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.7",
-        "Programming Language :: Python :: 3.8",
-        "Operating System :: Unix",
-        "Operating System :: MacOS :: MacOS X",
-        "Operating System :: Microsoft :: Windows",
-        "Topic"::"Machine Learning",
-        "Topic"::"Data Cleaning",
-        "Topic":: "Data Science",
-    ]
 )
