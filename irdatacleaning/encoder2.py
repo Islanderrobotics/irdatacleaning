@@ -15,10 +15,10 @@ class Encoder:
         self.df = df
         self.copy = df.copy()
         self.type = type
-        print(type(self.df))
-        datetime = StringToDateTime(self.df)
-        self.df = datetime.check()
-        print(type(self.df))
+
+        # datetime = StringToDateTime(self.df)
+        # self.df = datetime.check()
+
     def check(self):
         self.object_column = []
         self.time_column = []
@@ -47,8 +47,9 @@ class Encoder:
     def OneHotEncoder(self):
         for i in self.object_column:
             encoder = OneHotEncoder()
-            temp = pd.DataFrame(self.df[i])
-            finalencoder = pd.get_dummies(temp)
+
+            finalencoder = encoder.fit_transform(self.df[i].array.reshape(-1, 1)).toarray()
+            finalencoder = pd.DataFrame(finalencoder, columns=encoder.categories_)
 
             for j in finalencoder.columns:
                 self.df[j] = finalencoder[j]
