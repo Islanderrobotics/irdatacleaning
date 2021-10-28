@@ -1,5 +1,6 @@
 import pandas as pd
 from sklearn.preprocessing import OneHotEncoder,OrdinalEncoder
+from .stringtodatetime import StringToDateTime
 class Encoder:
     def __init__(self,df,type = ""):
         ''' this class is dessigned to help you make encoding your data simple
@@ -14,25 +15,19 @@ class Encoder:
         self.df = df
         self.copy = df.copy()
         self.type = type
+        print(type(self.df))
+        datetime = StringToDateTime(self.df)
+        self.df = datetime.check()
+        print(type(self.df))
     def check(self):
         self.object_column = []
         self.time_column = []
         for i in self.df.columns:
             if (self.df[i].dtype == "object"):
-                if (isinstance(self.df[i][0], str)):
+                self.object_column.append(i)
 
-                    string = self.df[i][0]
-                    date = string.count("/")
-                    if (date ==2):
 
-                        self.time_column.append(i)
-                    else:
-                        self.object_column.append(i)
-
-        if (self.object_column==[] and self.time_column ==[]):
-            pass
-        else:
-            self.Correct()
+        self.Correct()
         return self.df
     def Correct(self):
         self.Universal()
@@ -52,8 +47,9 @@ class Encoder:
     def OneHotEncoder(self):
         for i in self.object_column:
             encoder = OneHotEncoder()
-            finalencoder = encoder.fit_transform(self.df[i].array.reshape(-1, 1)).toarray()
-            finalencoder = pd.DataFrame(finalencoder, columns=encoder.categories_)
+            temp = pd.DataFrame(self.df[i])
+            finalencoder = pd.get_dummies(temp)
+
             for j in finalencoder.columns:
                 self.df[j] = finalencoder[j]
             self.df.drop(columns=i, inplace=True)
