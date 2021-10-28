@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '0.0.0'
+VERSION = '2021.0.0'
 DESCRIPTION = 'module designed to make your data preprocessing experience easier'
 with open("README.md") as description:
     LONG_DESCRIPTION = description.read()
@@ -20,14 +20,14 @@ setup(
     classifiers=[
         "Development Status :: 1 - Planning",
         "Intended Audience :: Developers",
-        "Programming Language :: Python :: 3"
+        "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.7",
-        "Programming Language :: Python :: 3.8"
+        "Programming Language :: Python :: 3.8",
         "Operating System :: Unix",
         "Operating System :: MacOS :: MacOS X",
         "Operating System :: Microsoft :: Windows",
         "Topic"::"Machine Learning",
-        "Topic"::"Data Cleaning"
-        "Topic":: "Data Science"
+        "Topic"::"Data Cleaning",
+        "Topic":: "Data Science",
     ]
 )
