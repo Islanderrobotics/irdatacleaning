@@ -61,7 +61,7 @@ class StringToDateTime:
     def resource(self):
         links ={}
         links["youtube"] = ""
-        links["github"] = ""
+        links["github"] = "https://github.com/Islanderrobotics/string_to_date_time"
         for i in links.keys():
             print(f"the link for {i} is {links[i]}")
 
@@ -69,9 +69,10 @@ if __name__ =="__main__":
     import pandas as pd
     import datetime
     from stringtodatetime import StringToDateTime
-    data = pd.read_csv("landslide_data3.csv")
-# data = pd.read_csv('https://raw.githubusercontent.com/jldbc/coffee-quality-database/master/data/arabica_data_cleaned.csv')
+    # data = pd.read_csv("landslide_data3.csv")
+    data = pd.read_csv('https://raw.githubusercontent.com/jldbc/coffee-quality-database/master/data/arabica_data_cleaned.csv')
 # data = pd.read_csv("travel_times.csv"
 
     stringtodate = StringToDateTime(df = data)
     data = stringtodate.check()
+    stringtodate.resource()

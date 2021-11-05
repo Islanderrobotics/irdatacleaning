@@ -1,6 +1,7 @@
 import pandas as pd
-from sklearn.preprocessing import OneHotEncoder,OrdinalEncoder
-from .stringtodatetime import StringToDateTime
+from sklearn.preprocessing import OrdinalEncoder
+from stringtodatetime import StringToDateTime
+from inconsistent_data import InconsistentData
 class Encoder:
     def __init__(self,df,type = ""):
         ''' this class is dessigned to help you make encoding your data simple
@@ -16,12 +17,14 @@ class Encoder:
         self.copy = df.copy()
         self.type = type
 
-        # datetime = StringToDateTime(self.df)
-        # self.df = datetime.check()
+        datetime = StringToDateTime(self.df)
+        self.df = datetime.check()
+        correcting = InconsistentData(self.df)
+        correcting.column_names_white_space()
+        self.df = correcting.data_white_space()
 
     def check(self):
         self.object_column = []
-        self.time_column = []
         for i in self.df.columns:
             if (self.df[i].dtype == "object"):
                 self.object_column.append(i)
@@ -43,11 +46,20 @@ class Encoder:
 
     def OneHotEncoder(self):
         for i in self.object_column:
-            encoder = OneHotEncoder()
+            new_df = pd.get_dummies(self.df[i])
+            self.new_df = pd.concat([self.df,new_df],axis=1)
+        self.df = self.new_df
 
-            finalencoder = encoder.fit_transform(self.df[i].array.reshape(-1, 1)).toarray()
-            finalencoder = pd.DataFrame(finalencoder, columns=encoder.categories_)
 
-            for j in finalencoder.columns:
-                self.df[j] = finalencoder[j]
-            self.df.drop(columns=i, inplace=True)
+
+if __name__ == "__main__":
+    import pandas as pd
+
+    data = pd.read_csv("/Users/williammckeon/Sync/youtube videos/novembers 2021/Parsing data/code/travel_times.csv")
+    # data = pd.read_csv('https://raw.githubusercontent.com/jldbc/coffee-quality-database/master/data/arabica_data_cleaned.csv')
+    # data = pd.read_csv("travel_times.csv")
+    print(type(data))
+    stringtodate = Encoder(df=data)
+    data = stringtodate.check()
+    print(data.columns)
+    # print(stringtodate.new_df.columns)

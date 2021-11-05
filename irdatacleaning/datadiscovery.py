@@ -62,7 +62,7 @@ class DataDiscovery:
                 if (self.df[i].isnull().values.any()):
                     isnull.append(i)
             if (isnull!=[]):
-                print(f"your data set has {len(isnull)} column with null values, would you like to see the column names\n"
+                print(f"your data set has {len(isnull)} columns with null values, would you like to see the column names\n"
                       "as well as the amount of null values in that column")
                 columns = input("enter yes if you do")
                 if columns.upper() == "YES":

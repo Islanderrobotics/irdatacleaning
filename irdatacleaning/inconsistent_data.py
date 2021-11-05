@@ -66,7 +66,7 @@ class InconsistentData:
         else:
             raise NeedsToBeADict
         return self.df
-    def check(self, seperatingwords = False, origin = "", corrections = "" , case = "title", correcting = False, column_name = "", cell_corrections=None):
+    def check(self, seperatingwords = False, origin = "", corrections = "" , change_case = False,case = "title", correcting = False, column_name = "", cell_corrections=None):
         '''this methode is designed to automate all the steps. needed except you will have to provide some
         input arguments
         first is seperatingwords by defalut is false when you set this to true you will be calling the
@@ -74,6 +74,8 @@ class InconsistentData:
         therefore you will have to add what the origin is set equal
         as well as corrections these will both be some kind string values
         next input value will be case
+
+        change_case = False to be able to have all your column names changed to the same case you will want change the value of change_case to true
         case = "title"
         you can change this depending on how you would like to formate your column names
         when you want to correct specifica values in the data you will set correcting to true as well as
@@ -83,8 +85,8 @@ class InconsistentData:
         the corrected pandas data frame will be return'''
         if seperatingwords:
             self.seperatingwords(origin = origin,change = corrections)
-
-        self.changeing_column_cases(case)
+        if change_case:
+            self.changeing_column_cases(case)
         self.column_names_white_space()
         self.data_white_space()
         if correcting:

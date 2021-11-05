@@ -17,7 +17,7 @@ class DataCorrelation:
     this method returns a pandas dataframe
 
     Check(): this method will call uppon both LookingAtCorr, and Correlationmatrix for you
-    this method also will return a pandas dataframe
+    this method also will return a pandas dataframe.
     '''
     def __init__(self,df):
         self.df = df

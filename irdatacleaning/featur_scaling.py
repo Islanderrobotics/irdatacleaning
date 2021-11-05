@@ -2,6 +2,12 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 
 class FeatureScaler:
+    '''FeatureScaler:
+    this class is dessigned to make featur scaling very simple and begginer friendly.
+    this class has 2 input arguments.
+    FeatureScaler(df,checker=2)
+    df: which is the dataset that you will be applying standard scaller
+    checker'''
     def __init__(self, df, checker = 2):
         self.df = df
         self.scalerchecker = []
