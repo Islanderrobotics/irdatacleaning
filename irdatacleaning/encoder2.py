@@ -3,7 +3,7 @@ from sklearn.preprocessing import OrdinalEncoder
 from .stringtodatetime import StringToDateTime
 from .inconsistent_data import InconsistentData
 class Encoder:
-    def __init__(self,df,type = ""):
+    def __init__(self,df,type = "", columns = []):
         ''' this class is dessigned to help you make encoding your data simple
         the input variables for this class are
         df: a pandas dataframe
@@ -16,7 +16,7 @@ class Encoder:
         self.df = df
         self.copy = df.copy()
         self.type = type
-
+        self.columns = columns
         datetime = StringToDateTime(self.df)
         self.df = datetime.check()
         correcting = InconsistentData(self.df)
@@ -24,12 +24,13 @@ class Encoder:
         self.df = correcting.data_white_space()
 
     def check(self):
-        self.object_column = []
-        for i in self.df.columns:
-            if (self.df[i].dtype == "object"):
-                self.object_column.append(i)
-
-
+        if (len(self.columns)==0):
+            self.object_column = []
+            for i in self.df.columns:
+                if (self.df[i].dtype == "object"):
+                    self.object_column.append(i)
+        else:
+            self.object_column = [i for i in self.columns]
         self.Correct()
         return self.df
     def Correct(self):
