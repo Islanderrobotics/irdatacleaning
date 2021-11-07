@@ -7,7 +7,10 @@ class StringToDateTime:
     df is where you will define the pandas dataframe that you will work with
     column_names is when you have a column names for columns you wish have converted to datetime
     that is not not ["date","dates","starttime","start_time","start time"], to use this input argument
-    successfully you must pass in a list'''
+    successfully you must pass in a list
+    check(): to tell the module to make the corrections you must call the check method
+    resources(): will give you the link to the youtube video about this module as well as the github
+    '''
 
     def __init__(self,df, column_names = []):
         if isinstance(column_names,list) is False:

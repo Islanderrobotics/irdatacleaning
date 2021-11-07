@@ -7,7 +7,49 @@ class NeedsToBeAPandasDataFrame(Exception):
 class InconsistentData:
     def __init__(self, df):
         '''this class is dessigned to help you in the process of correcting inconsitent data
-        a full tutorial you can find at {youtube link}'''
+        you have the ability to use use,
+        seperatingwords(origin,change):
+        this method is created so that you will be able to make sure all the columns
+        names with more then one word is seperated correctly
+        origin is the original format used to seperate the words
+        change is the format you would like to be used to seperate words
+        changeing_column_cases(case = "title")
+        this method is used to correct the columns nanes so that they are all in
+        full caps, full lower, or title case
+        case will be used to tell the method what case you would like
+        by defalut case will be set equal to title but by saying
+        case = upper the column names will be put to full lower
+        and the same for case = upper
+        column_names_white_space():
+        this method will be used to correct white space in column names
+        data_white_space():
+        this method will be used to correct white space in the dataset
+        correcting(column_name, corrections ):
+        this method is dessigned to help you make the needed changes to the data in the cells
+        so that your data is more consistent
+        column_name is the var used to identify which column will get the corrections
+        corrections is the dictionary with the corrected valuescheck(seperatingwords = False, origin = "", corrections = "" , change_case = False,case = "title", correcting = False, column_name = "", cell_corrections=None):
+        this methode is designed to automate all the steps. needed except you will have to provide some
+        input arguments
+        first is seperatingwords by defalut is false when you set this to true you will be calling the
+        seperatingwords words method
+        therefore you will have to add what the origin is set equal
+        as well as corrections these will both be some kind string values
+        next input value will be case
+
+        change_case = False to be able to have all your column names changed to the same case you will want change the value of change_case to true
+        case = "title"
+        you can change this depending on how you would like to formate your column names
+        when you want to correct specifica values in the data you will set correcting to true as well as
+        column_name = to the column name that will get these corrections done
+        then
+        cell_corrections = to a dictionary
+        the corrected pandas data frame will be return
+        autocheck():
+        does the same as what check does but walks you through the proccess of making all the changes
+        resources():
+        a method dessigned to give you links for more information on the class'''
+
         if (isinstance(df, pd.core.frame.DataFrame)):
             self.df = df
             self.copy_df = df.copy
@@ -145,6 +187,6 @@ class InconsistentData:
 
     def resources(self):
         git = "https://github.com/Islanderrobotics/inconsistent_data"
-        youtube = "has not gone live yet"
+        youtube = "https://youtu.be/KycIq40BhhI"
         print(f"you can find more resurces on youtube at {youtube}")
         print(f"as well as on git hub at {git}")

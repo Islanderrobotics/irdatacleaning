@@ -7,7 +7,8 @@ class FeatureScaler:
     this class has 2 input arguments.
     FeatureScaler(df,checker=2)
     df: which is the dataset that you will be applying standard scaller
-    checker'''
+    checker is the threshold that your columns will be evluated at, by default this variable is set to 2 but you can change
+    this depending on what you need'''
     def __init__(self, df, checker = 2):
         self.df = df
         self.scalerchecker = []
