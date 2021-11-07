@@ -2,7 +2,7 @@ from pandas.plotting import scatter_matrix
 import matplotlib.pyplot as plt
 from PyQt5 import QtWidgets
 import sys
-from IslanderDataPreprocessing import DataVisulization
+# from IslanderDataPreprocessing import DataVisulization
 
 class DataCorrelation:
     '''this module allows you to be able to view the correlation values of your dataset
@@ -85,14 +85,14 @@ class DataCorrelation:
                 column.pop(index)
             scatter_matrix(self.copy[matrix],figsize=self.FindingScreenSize_())
             plt.show()
-        choice = input("enter yes if there is a plot you would like to view in more depth")
-        if (choice.upper()=="YES"):
-            for i in self.copy.columns:
-                print(i)
-            x = input("enter the name of the column you would like to be on the x axis")
-            y = input("enter the name of the column you would like to be on the y axis")
-            single_plot =DataVisulization(data = self.copy, type_of_plot="scatter",column_values_for_x=x,column_values_for_y=y)
-            single_plot.driver()
+        # choice = input("enter yes if there is a plot you would like to view in more depth")
+        # if (choice.upper()=="YES"):
+        #     for i in self.copy.columns:
+        #         print(i)
+        #     x = input("enter the name of the column you would like to be on the x axis")
+        #     y = input("enter the name of the column you would like to be on the y axis")
+        #     single_plot =DataVisulization(data = self.copy, type_of_plot="scatter",column_values_for_x=x,column_values_for_y=y)
+        #     single_plot.driver()
     def combine(self):
         copy_of_copy = self.copy.copy()
         drop = []

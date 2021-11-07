@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn.preprocessing import OrdinalEncoder
-from stringtodatetime import StringToDateTime
-from inconsistent_data import InconsistentData
+from .stringtodatetime import StringToDateTime
+from .inconsistent_data import InconsistentData
 class Encoder:
     def __init__(self,df,type = ""):
         ''' this class is dessigned to help you make encoding your data simple

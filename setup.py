@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '2021.0.0'
+VERSION = '2021.0.3'
 DESCRIPTION = 'module designed to make your data preprocessing experience easier'
 with open("README.md") as description:
     LONG_DESCRIPTION = description.read()
