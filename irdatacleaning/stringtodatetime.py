@@ -63,7 +63,7 @@ class StringToDateTime:
         return self.df
     def resource(self):
         links ={}
-        links["youtube"] = ""
+        links["youtube"] = "https://youtu.be/j5m9UgnP5bU"
         links["github"] = "https://github.com/Islanderrobotics/string_to_date_time"
         for i in links.keys():
             print(f"the link for {i} is {links[i]}")

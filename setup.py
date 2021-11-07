@@ -16,5 +16,5 @@ setup(
     long_description=LONG_DESCRIPTION,
     packages=find_packages(),
     install_requires=["pandas","matplotlib","PyQt5","scikit-learn","IslanderDataPreprocessing"],
-    keywords=['python',"machine Learning", "Artificial Intelligence","Data Science","Data Cleaning"],
+    keywords=['python',"Machine Learning", "Artificial Intelligence","Data Science","Data Cleaning"],
 )
