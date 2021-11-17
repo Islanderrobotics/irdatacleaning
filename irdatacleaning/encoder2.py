@@ -30,8 +30,13 @@ class Encoder:
                 if (self.df[i].dtype == "object"):
                     self.object_column.append(i)
         else:
+            # print("yes")
+
             self.object_column = [i for i in self.columns]
         self.Correct()
+        # print(self.object_column)
+        # print("yes")
+        # print(self.df)
         return self.df
     def Correct(self):
         if (self.type == "" or self.type.upper() == "ONEHOTENCODER"):
@@ -63,8 +68,11 @@ if __name__ == "__main__":
     data = pd.read_csv("/Users/williammckeon/Sync/youtube videos/novembers 2021/Parsing data/code/travel_times.csv")
     # data = pd.read_csv('https://raw.githubusercontent.com/jldbc/coffee-quality-database/master/data/arabica_data_cleaned.csv')
     # data = pd.read_csv("travel_times.csv")
-    print(type(data))
-    stringtodate = Encoder(df=data)
+    # print(type(data))
+    import  irdatacleaning
+
+    stringtodate = Encoder(df=data, columns = ["DayOfWeek"])
     data = stringtodate.check()
-    print(data.dtypes)
+    # print(data.info())
+    print(data.info())
     # print(stringtodate.new_df.columns)
