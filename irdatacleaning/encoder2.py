@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn.preprocessing import OrdinalEncoder
-from stringtodatetime import StringToDateTime
-from inconsistent_data import InconsistentData
+from .stringtodatetime import StringToDateTime
+from .inconsistent_data import InconsistentData
 class Encoder:
     def __init__(self,df,type = "", columns = []):
         ''' this class is dessigned to help you make encoding your data simple
@@ -9,6 +9,9 @@ class Encoder:
         df: a pandas dataframe
         type: by defalult this variable will br set to ONEHOTENCODER if you with to use
         OrdinalEncoder you would set type to ordinalencoder
+        columns: when you have specific columns you want to be be corrected a specific way
+        then import the column or column names to this variable and only those columns will get corrected
+        they type you specificed
         then you can call the check method to make the corretions
         this method will return a pandas data frame
         if you wish to compare the returned value to the original dataset you may
@@ -56,9 +59,10 @@ class Encoder:
     def OneHotEncoder(self):
         for i in self.object_column:
             new_df = pd.get_dummies(self.df[i])
-            self.new_df = pd.concat([self.df,new_df],axis=1)
-        self.new_df.drop(columns=self.object_column,inplace=True)
-        self.df = self.new_df
+            for  j in new_df.columns:
+                self.df[j] = new_df[j]
+        self.df.drop(columns=self.object_column,inplace=True)
+
 
 
 

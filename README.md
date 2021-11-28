@@ -28,9 +28,13 @@ the input variables for this class are
 df: a pandas dataframe
 type: by defalult this variable will br set to ONEHOTENCODER if you with to use
 OrdinalEncoder you would set type to ordinalencoder
-then you can call the check method to make the corretions this method will return a pandas data frame.
-if you wish to compare the returned value to the original dataset you may call copy.
-
+columns: when you have specific columns you want to be be corrected a specific way
+then import the column or column names to this variable and only those columns will get corrected
+they type you specificed
+then you can call the check method to make the corretions
+this method will return a pandas data frame
+if you wish to compare the returned value to the original dataset you may
+call copy
 ##FeatureScaler:
 this class is dessigned to make featur scaling very simple and begginer friendly.
 this class has 2 input arguments.
@@ -84,13 +88,21 @@ does the same as what check does but walks you through the proccess of making al
 resources():
 a method dessigned to give you links for more information on the class
 ## MissingValues:
-Is dessigned to make correcting missing values alot more accesable.
-MissingValues(df)
-df: is the inputted pandas dataframe what will have corrections made to it
-check is the method used to tell the module to start the corrections, this method will return the corrected dataframe
-if you wish to get the original dataframe call the copy variable.
-currently you are only able to use the median stratagy however other methods are in the work
-
+MissingValues(df, stategy, columns, fillna)
+df: is where you will enter in the pandas dataframe you wish to correct
+stategy: is where you will define the strategy you with to use to correct the missing values
+the strategy options you have are median, fillna and dropna enter one of those options to have your missing values
+corrected in that strategy, by default this var is set to median
+columns: is where you will enter the list of columns you wish to have the missing values corrected in
+fillna: when you enter fillna for the stategy this is where you will enter the value you wish for the columns missing
+values to be set to, currently you are only able to set this input variable to one value so i sugest that if you
+have multiple columns that have misisng values use the median strategy to correct them or if you wish to still use the
+fillna strategy with multiple columns use this class more than once there will be a version of this module in the
+future that will allow you to use fillna on multiple columns with different values
+check(): this is the method that you will use to tell the module to start making changes to the pandas data frame that you entered
+this method will return the corrected pandas data frame.
+copy_df: is the original unaltered dataframe
+currently this module is only designed to be used with columns that are not object columns
 ## StringToDateTime:
 this class is designed to make converting strings to datetime more accessable
 this is done by creating an instance of the class StringToDateTime(df, column_names)
