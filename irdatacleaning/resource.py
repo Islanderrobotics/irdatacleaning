@@ -4,7 +4,7 @@ class Resources:
         links = {}
         links["main github"] = "https://github.com/Islanderrobotics/irdatacleaning"
         links["github tutorial"] = "https://github.com/Islanderrobotics/titanic"
-        links["youtube"] = "https://youtu.be/EFyEV30tyVI
+        links["youtube"] = "https://youtu.be/EFyEV30tyVI"
         for i in links.keys():
             print(f"the link to {i} is {links[i]}")
 
