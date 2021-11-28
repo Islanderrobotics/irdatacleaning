@@ -49,6 +49,7 @@ class Encoder:
         for i in self.object_column:
             new_df = pd.get_dummies(self.df[i])
             self.new_df = pd.concat([self.df,new_df],axis=1)
+        self.new_df.drop(columns=self.object_column,inplace=True)
         self.df = self.new_df
 
 
@@ -62,5 +63,5 @@ if __name__ == "__main__":
     print(type(data))
     stringtodate = Encoder(df=data)
     data = stringtodate.check()
-    print(data.columns)
+    print(data.dtypes)
     # print(stringtodate.new_df.columns)
