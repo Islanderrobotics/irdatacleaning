@@ -22,7 +22,7 @@ class Encoder:
         correcting = InconsistentData(self.df)
         correcting.column_names_white_space()
         self.df = correcting.data_white_space()
-
+        self.np = self.df.iloc[:,:].values
     def check(self):
         if (len(self.columns)==0):
             self.object_column = []
@@ -39,11 +39,14 @@ class Encoder:
         elif (self.type.upper() == "ORDINALENCODER"):
             self.OrdinalEncoder()
     def OrdinalEncoder(self):
+        columns = [i for i in self.df.columns]
         for i in self.object_column:
-            translate = OrdinalEncoder()
-            final = translate.fit_transform(self.df[i].array.reshape(-1, 1))
-            self.df.drop(columns=i, inplace=True)
-            self.df[i] = final
+            for j in range(len(self.df.columns)):
+                if (columns[j] == i):
+                    translate = OrdinalEncoder()
+                    final = translate.fit_transform(self.np[i].reshape(-1, 1))
+                    self.df.drop(columns=i, inplace=True)
+                    self.df[i] = final
 
     def OneHotEncoder(self):
         for i in self.object_column:

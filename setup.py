@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '2021.0.6'
+VERSION = '2021.0.7'
 DESCRIPTION = 'module designed to make your data preprocessing experience easier'
 with open("README.md") as description:
     LONG_DESCRIPTION = description.read()
@@ -15,11 +15,7 @@ setup(
     long_description_content_type="text/markdown",
     long_description=LONG_DESCRIPTION,
     packages=find_packages(),
-<<<<<<< HEAD
+
     install_requires=["pandas","matplotlib","PyQt5","scikit-learn","IslanderDataPreprocessing"],
     keywords=['python',"Machine Learning", "Artificial Intelligence","Data Science","Data Cleaning"],
-=======
-    install_requires=["pandas","matplotlib","PyQt5","scikit-learn","IslanderDataPreprocessing", "numpy"],
-    keywords=['python',"machine Learning", "Artificial Intelligence","Data Science","Data Cleaning"],
->>>>>>> b8ca827 (still needs a few more tweaks in missing)
 )
