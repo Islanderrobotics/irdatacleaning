@@ -1,6 +1,5 @@
 '''there are 7 modules in this package you have teh DataBase class, DataDiscovery,
 DataVisulization, DataCorrelation, Encoder, MissingValues, FeatureScaler'''
-import IslanderDataPreprocessing
 from .datadiscovery import DataDiscovery
 from .datacorrelation import DataCorrelation
 from .encoder2 import Encoder
