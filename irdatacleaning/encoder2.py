@@ -28,6 +28,7 @@ class Encoder:
         self.df = correcting.data_white_space()
         self.np = np.array(self.df.iloc[:,:].values)
         self.categories = []
+        self.type = type(df)
     def check(self):
         if (len(self.columns)==0):
             self.object_column = []

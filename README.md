@@ -35,13 +35,6 @@ then you can call the check method to make the corretions
 this method will return a pandas data frame
 if you wish to compare the returned value to the original dataset you may
 call copy
-##FeatureScaler:
-this class is dessigned to make featur scaling very simple and begginer friendly.
-this class has 2 input arguments.
-FeatureScaler(df,checker=2)
-df: which is the dataset that you will be applying standard scaller
-checker is the threshold that your columns will be evluated at, by default this variable is set to 2 but you can change
-this depending on what you need.
 
 ## InconsistentData
 this class is dessigned to help you in the process of correcting inconsitent data
@@ -114,3 +107,32 @@ check(): to tell the module to make the corrections you must call the check meth
 resources(): will give you the link to the youtube video about this module as well as the github
 ## Resources:
 this class is used to allow you islanders the ability to get additional resources on the module or classes
+
+## FeatureScaler:
+This class is designed to allow you to scale your data with ease. You have the ability to scaler your
+by using StandardScaler or normalize. Not only that, but you can also scale either the whole dataset or
+you can just scale one column at a time.
+the initialization of this module is
+FeatureScaler(data,scaler=StandardScaler,columns=[])
+data is where you can either enter a pandas data frame or a NumPy array,
+by default the scaler this module will use is StandardScaler, but you can change this variable to normalize to use
+normalization.
+the columns input argument is to allow you the ability to have more control over what columns get scaled if you leave this
+empty, you will end up scaling the whole dataset
+to tell the module to do something with the data, all you have to do is call the check method by .check()
+this will return the scaled data that you imported in the same format that you entered it as
+
+```python
+import irdatacleaning as ird
+import numpy as np
+scaler_data= np.array([[ 1., -1.,  2.],
+                    [ 2.,  0.,  0.],
+                    [ 0.,  1., -1.]])
+scaler = ird.FeatureScaler(data = scaler_data)
+scaler_data = scaler.check()
+norm_data= np.array([[ 1., -1.,  2.],
+            [ 2.,  0.,  0.],
+            [ 0.,  1., -1.]])
+norm = ird.FeatureScaler(data = norm_data,scaler = "normalize", columns = [1])
+norm_data = norm.check()
+```
